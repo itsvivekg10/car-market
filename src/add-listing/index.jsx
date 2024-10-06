@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import Header from "../component/header/Header";
+import Header from "../component/header/HEader";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import "./AddListing.css";
 import carDetails from "../assets/carDetails.json";
