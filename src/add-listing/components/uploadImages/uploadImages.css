@@ -1,0 +1,88 @@
+.image-box {
+  width: 400px;
+  height: 300px;
+  border: black;
+  border-style: solid;
+  display: flex;
+  flex-direction: column;
+}
+.upload-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 8px;
+}
+
+.upload-container h3 {
+  margin-right: 10px;
+  font-weight: normal;
+}
+
+.file-input-wrapper {
+  position: relative;
+  width: 100px;
+  height: 100px;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  display: flex;
+  justify-content: center;
+  background-image: url("https://t4.ftcdn.net/jpg/04/81/13/43/360_F_481134373_0W4kg2yKeBRHNEklk4F9UXtGHdub3tYk.jpg");
+  background-size: cover;
+}
+
+.file-input {
+  opacity: 0;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+}
+
+.file-label {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  width: 100%;
+  height: 100%;
+}
+
+.upload-icon {
+  width: 24px;
+  height: 24px;
+  filter: invert(1);
+}
+.upload {
+  display: flex;
+  flex-direction: column; /* Change to row for horizontal alignment */
+  flex-wrap: wrap; /* Allow images to wrap onto the next line */
+  gap: 10px; /* Add some spacing between images */
+}
+
+.upload {
+  position: relative;
+  display: inline-block; /* Allows images to be positioned correctly within the flexbox */
+}
+
+.upload img {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 2px solid #e0e0e0;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.dlt-btn {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  border: none;
+  border-radius: 50%;
+  color: white;
+  padding: 5px;
+  cursor: pointer;
+  font-size: 12px;
+}

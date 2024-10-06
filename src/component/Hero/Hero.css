@@ -1,0 +1,57 @@
+/* Container styles */
+.hero {
+  border-bottom-left-radius: 3%;
+  border-bottom-right-radius: 3%;
+  border-style: solid;
+  border-color: black;
+  border-width: 1px;
+  border-top-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height */
+  background: #eef0fc; /* Background gradient */
+  color: black; /* Text color for contrast */
+  text-align: center;
+  padding: 0 20px; /* Padding for small screens */
+}
+.text-box {
+  margin-bottom: 90px;
+}
+/* Styling the main heading */
+.hero h2 {
+  font-size: 1.5rem; /* Large font for bigger screens */
+  font-weight: bold;
+  margin: 3px 0;
+}
+
+/* Second heading to have slightly larger font */
+.hero h2:nth-child(2) {
+  font-size: 3rem; /* Slightly larger font size for emphasis */
+}
+
+.heroiamge {
+  margin-top: 70px;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+  .hero h2 {
+    font-size: 2rem; /* Smaller text on tablet-size screens */
+  }
+
+  .hero h2:nth-child(2) {
+    font-size: 2.5rem; /* Adjust the second heading font size */
+  }
+}
+
+@media (max-width: 480px) {
+  .hero h2 {
+    font-size: 1.5rem; /* Smaller text for mobile screens */
+  }
+
+  .hero h2:nth-child(2) {
+    font-size: 2rem;
+  }
+}

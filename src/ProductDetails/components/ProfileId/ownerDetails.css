@@ -1,0 +1,49 @@
+.owner-card {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  padding: 20px;
+  width: 350px;
+  font-family: "Arial", sans-serif;
+  text-align: center;
+  margin-left: 30px;
+}
+
+.owner-info {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 15px 0;
+}
+
+.owner-avatar {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  margin-right: 10px;
+}
+
+.owner-text h4 {
+  margin: 0;
+  font-size: 16px;
+}
+
+.owner-text p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.message-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.message-btn:hover {
+  background-color: #0056b3;
+}

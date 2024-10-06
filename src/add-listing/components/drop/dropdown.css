@@ -1,0 +1,11 @@
+select {
+  width: 420px;
+  background-color: #fff; /* White background */
+  color: #000; /* Black text */
+  padding: 10px;
+  border-radius: 5px;
+  border: 1px solid #000; /* Black border */
+  outline: none;
+  font-size: 1rem;
+  margin-left: 30px;
+}

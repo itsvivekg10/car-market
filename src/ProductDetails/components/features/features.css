@@ -1,0 +1,30 @@
+.features-container {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 16px; /* Space between items */
+  margin-top: 20px;
+}
+
+.feature-item {
+  display: flex;
+  align-items: center;
+}
+
+.feature-item span:first-child {
+  margin-right: 8px; /* Space between the checkbox and feature text */
+}
+
+@media (max-width: 768px) {
+  .features-container {
+    grid-template-columns: repeat(
+      2,
+      1fr
+    ); /* Adjust to 2 columns for smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .features-container {
+    grid-template-columns: 1fr; /* Adjust to 1 column for very small screens */
+  }
+}

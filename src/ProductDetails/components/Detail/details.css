@@ -1,0 +1,41 @@
+.detail-header {
+  padding: 20px;
+  background-color: white; /* Dark background */
+  color: black;
+}
+
+.listing-title {
+  font-size: 36px;
+  margin: 0;
+  color: black;
+  font-weight: bold;
+}
+
+.listing-subtitle {
+  font-size: 18px;
+  margin: 5px 0 20px;
+  color: black; /* Lighter gray for the subtitle */
+}
+
+.listing-details {
+  display: flex;
+  gap: 15px;
+  padding: 10px;
+  background-color: #fff; /* White background for details */
+  border-radius: 10px;
+  display: inline-flex;
+}
+
+.detail {
+  display: flex;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #f0f4ff; /* Light blue background for each detail */
+  color: #0088cc; /* Blue text color */
+  font-size: 14px;
+}
+
+.icon {
+  margin-right: 5px;
+}

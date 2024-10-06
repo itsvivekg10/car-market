@@ -1,0 +1,114 @@
+/* General styles for the navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 60px;
+  padding: 10px 20px;
+  background-color: #fff; /* Light background */
+  color: black; /* Dark text color */
+  border-bottom: 1px solid #e0e0e0; /* Subtle border */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
+  position: relative; /* For absolute positioning of dropdown */
+}
+
+.brand-name {
+  font-weight: bold; /* Corrected from font-style to font-weight */
+  font-size: 2rem;
+  color: #0088cc; /* Brand color */
+  margin-left: 10px; /* Align with logo */
+}
+
+.navbar img {
+  height: 70px; /* Logo height */
+  border-radius: 50%; /* Circular logo */
+}
+
+.userButton {
+  margin-right: 20px; /* Space from the right */
+}
+
+/* Button styles */
+.sign-in-button {
+  background-color: #0088cc; /* Match brand color */
+  border: none;
+  padding: 10px 15px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: background-color 0.3s ease; /* Smooth transition */
+}
+
+.sign-in-button:hover {
+  background-color: #005f8c; /* Darker hover color */
+}
+
+/* Navbar menu styles */
+.navbar-menu {
+  display: flex;
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.navbar-menu li {
+  margin: 0 15px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: color 0.3s; /* Smooth transition for color */
+}
+
+.navbar-menu li:hover {
+  color: #00aaff; /* Highlight on hover */
+}
+
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Responsive styles */
+@media (max-width: 768px) {
+  .navbar-menu {
+    display: none; /* Hide menu on mobile */
+  }
+
+  .navbar {
+    justify-content: space-between; /* Maintain spacing */
+  }
+
+  .navbar-right {
+    display: none; /* Optionally hide right side */
+  }
+
+  .hamburger {
+    display: block; /* Show hamburger icon */
+    cursor: pointer;
+  }
+
+  .hamburger div {
+    width: 25px;
+    height: 3px;
+    background-color: black;
+    margin: 5px;
+  }
+}
+
+/* Show menu when hamburger icon is clicked */
+.menu-open .navbar-menu {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute; /* Dropdown positioning */
+  top: 60px; /* Adjust based on navbar height */
+  left: 0;
+  right: 0;
+  background-color: #fff; /* Ensure background matches */
+  border: 1px solid #e0e0e0; /* Light border around dropdown */
+  z-index: 1000; /* Ensure it overlays content */
+}
+
+.menu-open .navbar-menu li {
+  margin: 10px 0; /* Space for dropdown items */
+}

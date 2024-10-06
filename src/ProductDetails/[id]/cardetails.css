@@ -1,0 +1,65 @@
+/* Container for the entire listing details section */
+.listing-details-container {
+  width: 95%;
+  padding: 20px;
+  background-color: #f9f9f9;
+  margin-left: 15px;
+}
+
+/* Styling for the main content section */
+.details-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+/* Left section styling */
+.details-left {
+  flex: 1;
+  max-width: 60%;
+  padding-right: 20px;
+}
+
+.details-img {
+  width: 750px;
+  height: 500px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  margin-left: 50px;
+}
+
+/* Right section styling */
+.details-right {
+  flex: 1;
+  max-width: 35%;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* Price, Specification, OwnerDetails component sectioning */
+.details-right > * {
+  padding: 20px;
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  .details-content {
+    flex-direction: column;
+  }
+
+  .details-left,
+  .details-right {
+    max-width: 100%;
+    padding: 0;
+  }
+
+  .details-right > * {
+    margin-top: 20px;
+  }
+}

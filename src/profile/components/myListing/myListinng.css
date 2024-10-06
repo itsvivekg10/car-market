@@ -1,0 +1,97 @@
+.heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.add-listing-btn {
+  background-color: #0088cc;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.car-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.car-card {
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.car-card-header {
+  position: relative;
+}
+
+.car-image {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+}
+
+.new-badge {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  background-color: #00cc00;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+}
+
+.car-card-body {
+  padding: 15px;
+}
+
+.car-details p {
+  margin: 5px 0;
+  font-size: 14px;
+  color: #666;
+}
+
+.price {
+  font-size: 18px;
+  color: black;
+  font-weight: bold;
+}
+
+.car-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+}
+
+.view-details {
+  color: #0088cc;
+  text-decoration: none;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+.edit-btn,
+.delete-btn {
+  background-color: #0088cc;
+  color: white;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}

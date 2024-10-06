@@ -1,0 +1,51 @@
+/* Search Bar Container */
+.search-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: white;
+  border: 2px solid black;
+  border-radius: 50px; /* Rounded edges */
+  padding: 10px;
+  width: 600px;
+  height: 50px;
+  margin-bottom: 10px;
+}
+
+/* Dropdown Selectors */
+.search-select {
+  border: none;
+  outline: none;
+  font-size: 1rem;
+  padding: 5px 10px;
+  flex: 1; /* Make dropdowns flexible */
+  font-style: italic; /* Placeholder style */
+  background: none;
+}
+
+/* Dividers between dropdowns */
+.divider {
+  width: 1px;
+  height: 100%;
+  background-color: black;
+  margin: 0 10px;
+}
+
+/* Search Button */
+.search-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* Optional: Adjust for responsiveness */
+@media (max-width: 768px) {
+  .search-bar {
+    width: 100%; /* Full width on smaller screens */
+  }
+}
