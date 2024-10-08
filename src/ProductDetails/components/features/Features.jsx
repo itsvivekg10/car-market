@@ -1,5 +1,5 @@
 import React from "react";
-import "./Features.css"; // Import your CSS file
+import "./features.css"; // Import your CSS file
 
 function Features({ carDetails }) {
   console.log("ln4", carDetails?.features);
