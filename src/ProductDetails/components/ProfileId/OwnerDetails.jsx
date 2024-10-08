@@ -1,6 +1,6 @@
 import React from "react";
 import Servicee from "../../../../shared/Servicee";
-import "./OwnerDetails.css"; // External CSS file
+import "./ownerDetails.css"; // External CSS file
 import { useUser } from "@clerk/clerk-react";
 import { useNavigate } from "react-router-dom";
 

@@ -1,6 +1,6 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useEffect, useState } from "react";
-import "./uploadimages.css";
+import "./uploadImages.css";
 import { storage } from "../../../../configs/firebaseConfig";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { carImages } from "../../../../configs/schema";
