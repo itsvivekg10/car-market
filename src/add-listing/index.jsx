@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Header from "../component/header/Header";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import "./AddListing.css";
+import "./addListing.css";
 import carDetails from "../assets/carDetails.json";
 import InputField from "./components/InputField";
 import DropdownField from "./components/drop/DropdownField";

@@ -9,7 +9,6 @@ import MostSaleCar from "./component/MostSaleCar/MostSaleCar";
 function Home() {
   return (
     <>
-      {" "}
       <Header />
       <Hero />
       <Cateagory />
