@@ -1,5 +1,5 @@
 import React from "react";
-import "./Header.css"; // Import the CSS file
+import "./header.css"; // Import the CSS file
 import { SignInButton, UserButton, useUser } from "@clerk/clerk-react";
 import { Link } from "react-router-dom";
 
