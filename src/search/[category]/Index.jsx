@@ -5,7 +5,7 @@ import { carImages, CarListing } from "../../../configs/schema";
 import { eq } from "drizzle-orm";
 import FormatResult from "../../../shared/Service";
 import { Link, useParams } from "react-router-dom";
-import Header from "../../component/header/HEader";
+import Header from "../../component/header/Header";
 import "./categoryyy.css";
 
 function SearchByCategory() {

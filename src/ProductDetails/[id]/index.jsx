@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import DetailHeader from "../components/Detail/DetailHeader";
-import Header from "../../component/header/HEader";
+// import Header from "../../component/header/HEader";
+import Header from "../../component/header/Header";
 import Calculator from "../components/Calculator";
 import Price from "../components/Price";
 import Features from "../components/features/Features";

@@ -1,6 +1,6 @@
 import { SignInButton } from "@clerk/clerk-react";
 import React from "react";
-import Header from "./component/header/HEader";
+import Header from "./component/header/Header";
 import Hero from "./component/Hero/Hero";
 import Cateagory from "./component/Categoary/Cateagory";
 import InfoSection from "./component/Infosection/InfoSection";
