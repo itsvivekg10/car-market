@@ -10,7 +10,8 @@ import { drizzle } from "drizzle-orm/neon-http";
 import * as schema from "./schema";
 
 // Access the environment variable using import.meta.env
-const connectionString = import.meta.env.VITE_DRIZZLE_DATABASE_URL;
+const connectionString =
+  "postgresql://neondb_owner:d2QtbilA8nog@ep-lingering-recipe-a5d6posz.us-east-2.aws.neon.tech/neondb?sslmode=require";
 
 if (!connectionString) {
   throw new Error("No database connection string provided.");

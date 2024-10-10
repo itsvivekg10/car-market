@@ -6,7 +6,8 @@ import { getStorage } from "firebase/storage";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  // apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  apiKey: "AIzaSyDzU4KMcHdn54e9NbXLMOef94WCtgL7AKo",
   authDomain: "car-marketplace-dba59.firebaseapp.com",
   projectId: "car-marketplace-dba59",
   storageBucket: "car-marketplace-dba59.appspot.com",
