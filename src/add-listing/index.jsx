@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import Header from "../component/header/Header";
 import { useNavigate, useSearchParams } from "react-router-dom";
-import "./addListing.css";
 import carDetails from "../assets/carDetails.json";
 import InputField from "./components/InputField";
 import DropdownField from "./components/drop/DropdownField";
@@ -16,7 +15,7 @@ import { eq } from "drizzle-orm";
 import FormatResult from "../../shared/Service";
 
 function AddListing() {
-  const [formData, setFormData] = useState({}); // Unified state for form data
+  const [formData, setFormData] = useState({});
   const [featuresData, setFeaturesData] = useState({});
   const [triggerUploadImage, setTriggerUploadImage] = useState(null);
   const [searchParams] = useSearchParams();
@@ -27,6 +26,7 @@ function AddListing() {
   const mode = searchParams.get("mode");
   const recordId = searchParams.get("id");
   console.log("this is record id", recordId);
+
   useEffect(() => {
     if (mode === "edit") {
       GetListingDetail();
@@ -41,8 +41,8 @@ function AddListing() {
         .leftJoin(carImages, eq(CarListing.id, carImages.carListingId))
         .where(eq(CarListing.id, recordId));
       const resp = FormatResult(result);
-      setFormData(resp[0]); // Set formData directly from the fetched result
-      setFeaturesData(resp[0]?.features || {}); // Initialize features
+      setFormData(resp[0]);
+      setFeaturesData(resp[0]?.features || {});
     } catch (error) {
       console.error("Error fetching listing details:", error);
     }
@@ -54,24 +54,16 @@ function AddListing() {
       [name]: value,
     }));
   };
-  //
-
-  // const handleFeatureChange = (name, value) => {
-  //   setFeaturesData((prevData) => ({ ...prevData, [name]: value }));
-  // };
 
   const handleFeatureChange = (name, value) => {
-    // Update the state with the new feature value
     setFeaturesData((prevData) => {
-      // Create a new object by including the current feature change
       const updatedData = {
         ...prevData,
         [name]: value,
       };
 
-      // Remove keys with false values
       return Object.fromEntries(
-        Object.entries(updatedData).filter(([key, val]) => val) // Keep only true values
+        Object.entries(updatedData).filter(([key, val]) => val)
       );
     });
   };
@@ -125,40 +117,120 @@ function AddListing() {
     }
   }, [savedId, navigate]);
 
+  // Inline styles with responsiveness
+  const styles = {
+    fullPage: {
+      backgroundColor: "#f4f4f4",
+      padding: "20px",
+      minHeight: "100vh",
+    },
+    formContainer: {
+      width: "90%",
+      backgroundColor: "#fff",
+      padding: "20px",
+      borderRadius: "10px",
+      border: "2px solid #000",
+      boxShadow: "0 4px 8px rgba(0, 0, 0, 0.2)",
+      margin: "0 auto",
+    },
+    heading: {
+      marginBottom: "20px",
+      color: "#000",
+      fontSize: "1.8rem",
+      textAlign: "center",
+    },
+    sectionHeader: {
+      fontSize: "1.5rem",
+      marginBottom: "20px",
+      color: "#000",
+    },
+    fieldContainer: {
+      display: "grid",
+      gridTemplateColumns: "repeat(auto-fill, minmax(300px, 1fr))",
+      gap: "20px",
+    },
+    label: {
+      marginBottom: "5px",
+      fontSize: "1rem",
+      color: "#000",
+    },
+    inputField: {
+      backgroundColor: "#fff",
+      color: "#000",
+      padding: "10px",
+      borderRadius: "5px",
+      border: "1px solid #000",
+      outline: "none",
+      fontSize: "1rem",
+      width: "100%",
+    },
+    textarea: {
+      width: "100%",
+      height: "100px",
+    },
+    requiredAsterisk: {
+      color: "#e74c3c",
+      marginLeft: "5px",
+    },
+    featuresContainer: {
+      display: "flex",
+      flexWrap: "wrap",
+      gap: "10px",
+    },
+    submitButton: {
+      backgroundColor: "#00aaff",
+      border: "none",
+      padding: "10px 15px",
+      color: "white",
+      fontSize: "1rem",
+      cursor: "pointer",
+      borderRadius: "4px",
+      width: "20%",
+      marginTop: "10px",
+      marginLeft: "35 %",
+    },
+  };
+
   return (
     <>
       <Header />
-      <div className="full-page">
-        <h2>{mode === "edit" ? "Edit Listing" : "Add New Listing"}</h2>
-        <div className="form-container">
+      <div style={styles.fullPage}>
+        <h2 style={styles.heading}>
+          {mode === "edit" ? "Edit Listing" : "Add New Listing"}
+        </h2>
+        <div style={styles.formContainer}>
           <form onSubmit={onSubmit}>
             <div>
-              <h2>Car Details</h2>
-              <div>
+              <h2 style={styles.sectionHeader}>Car Details</h2>
+              <div style={styles.fieldContainer}>
                 {carDetails.carDetails.map((item, index) => (
                   <div key={index}>
-                    <label>
+                    <label style={styles.label}>
                       {item.label}
-                      {item.required && <span>*</span>}
+                      {item.required && (
+                        <span style={styles.requiredAsterisk}>*</span>
+                      )}
                     </label>
                     {item.fieldType === "text" ||
                     item.fieldType === "number" ? (
                       <InputField
                         item={item}
                         handleInputChange={handleInputChange}
-                        carInfo={formData} // Passing formData instead of carInfo
+                        carInfo={formData}
+                        style={styles.inputField}
                       />
                     ) : item.fieldType === "dropdown" ? (
                       <DropdownField
                         item={item}
                         handleInputChange={handleInputChange}
-                        carInfo={formData} // Passing formData
+                        carInfo={formData}
                       />
                     ) : item.fieldType === "textarea" ? (
                       <TextArea
                         item={item}
                         handleInputChange={handleInputChange}
-                        carInfo={formData} // Passing formData
+                        carInfo={formData}
+                        style={styles.textarea}
                       />
                     ) : null}
                   </div>
@@ -167,8 +239,8 @@ function AddListing() {
             </div>
             <hr />
             <div>
-              <h2>Features</h2>
-              <div className="features-container">
+              <h2 style={styles.sectionHeader}>Features</h2>
+              <div style={styles.featuresContainer}>
                 {features.features.map((item, index) => (
                   <div key={index}>
                     <Checkbox
@@ -187,7 +259,7 @@ function AddListing() {
             <div>
               <UploadImage triggerUploadImage={triggerUploadImage} />
             </div>
-            <button className="submit-button" type="submit">
+            <button style={styles.submitButton} type="submit">
               Submit
             </button>
           </form>

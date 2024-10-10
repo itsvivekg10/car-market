@@ -1,5 +1,4 @@
 import React from "react";
-import "./features.css"; // Import your CSS file
 
 function Features({ carDetails }) {
   console.log("ln4", carDetails?.features);
@@ -8,15 +7,40 @@ function Features({ carDetails }) {
     ? Object.keys(carDetails.features)
     : [];
 
+  // Inline styles
+  const containerStyle = {
+    display: "grid",
+    gridTemplateColumns: "repeat(4, 1fr)", // 4 equal columns
+    gap: "16px", // Space between items
+    marginTop: "20px",
+  };
+
+  const featureItemStyle = {
+    display: "flex",
+    alignItems: "center",
+  };
+
+  const checkboxStyle = {
+    marginRight: "8px", // Space between the checkbox and feature text
+  };
+
+  // Media queries for smaller screens
+  const mobileStyle =
+    window.innerWidth <= 768
+      ? { gridTemplateColumns: "repeat(2, 1fr)" }
+      : window.innerWidth <= 480
+      ? { gridTemplateColumns: "1fr" }
+      : {};
+
   return (
     <>
       <div>
         <h3>Features</h3>
-        <div className="features-container">
+        <div style={{ ...containerStyle, ...mobileStyle }}>
           {featureData.length > 0 ? (
             featureData.map((item, index) => (
-              <div key={index} className="feature-item">
-                <span>☑️</span>
+              <div key={index} style={featureItemStyle}>
+                <span style={checkboxStyle}>☑️</span>
                 <span>{item}</span>
               </div>
             ))

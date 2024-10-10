@@ -1,41 +1,86 @@
 import React from "react";
-import "./Footer.css"; // Assuming you'll style it using external CSS
 
 const Footer = () => {
+  const footerStyle = {
+    textAlign: "center",
+    padding: "20px",
+    backgroundColor: "#f7f7f7",
+  };
+
+  const logoStyle = {
+    display: "flex",
+    justifyContent: "center",
+    alignItems: "center",
+    marginBottom: "10px",
+  };
+
+  const logoImgStyle = {
+    width: "50px",
+    marginRight: "10px",
+  };
+
+  const descriptionStyle = {
+    marginBottom: "20px",
+    color: "#555",
+  };
+
+  const linkListStyle = {
+    listStyle: "none",
+    padding: "0",
+  };
+
+  const linkItemStyle = {
+    display: "inline",
+    margin: "0 10px",
+  };
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "#333",
+  };
+
+  const socialStyle = {
+    margin: "0 10px",
+    color: "#333",
+  };
+
+  const socialIconStyle = {
+    fontSize: "20px",
+  };
+
   return (
-    <footer className="footer">
-      <div className="footer-logo">
+    <footer style={footerStyle}>
+      <div style={logoStyle}>
         <img
           src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ3Fg85DWsveLUGeGEgbjIvxZx5c3UXuvoNhQ&s"
           alt="Logo"
-          className="logo-img"
+          style={logoImgStyle}
         />
         <p>carmarketplace</p>
       </div>
-      <div className="footer-description">
+      <div style={descriptionStyle}>
         <p>Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
         <p>Incidunt consequuntur amet culpa cum itaque neque.</p>
       </div>
       <div className="footer-links">
         <nav>
-          <ul>
-            <li>
-              <a href="#about">About</a>
+          <ul style={linkListStyle}>
+            <li style={linkItemStyle}>
+              <a href="#about" style={linkStyle}>
+                About
+              </a>
             </li>
-            <li>
-              <a href="#careers">Careers</a>
+
+            <li style={linkItemStyle}>
+              <a href="#services" style={linkStyle}>
+                Services
+              </a>
             </li>
-            <li>
-              <a href="#history">History</a>
-            </li>
-            <li>
-              <a href="#services">Services</a>
-            </li>
-            <li>
-              <a href="#projects">Projects</a>
-            </li>
-            <li>
-              <a href="#blog">Blog</a>
+
+            <li style={linkItemStyle}>
+              <a href="#blog" style={linkStyle}>
+                Blog
+              </a>
             </li>
           </ul>
         </nav>
@@ -45,28 +90,41 @@ const Footer = () => {
           href="https://facebook.com"
           target="_blank"
           rel="noopener noreferrer"
+          style={socialStyle}
         >
-          <i className="fab fa-facebook"></i>
+          <i className="fab fa-facebook" style={socialIconStyle}></i>
         </a>
         <a
           href="https://instagram.com"
           target="_blank"
           rel="noopener noreferrer"
+          style={socialStyle}
         >
-          <i className="fab fa-instagram"></i>
+          <i className="fab fa-instagram" style={socialIconStyle}></i>
         </a>
-        <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-twitter"></i>
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={socialStyle}
+        >
+          <i className="fab fa-twitter" style={socialIconStyle}></i>
         </a>
-        <a href="https://github.com" target="_blank" rel="noopener noreferrer">
-          <i className="fab fa-github"></i>
+        <a
+          href="https://github.com"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={socialStyle}
+        >
+          <i className="fab fa-github" style={socialIconStyle}></i>
         </a>
         <a
           href="https://dribbble.com"
           target="_blank"
           rel="noopener noreferrer"
+          style={socialStyle}
         >
-          <i className="fab fa-dribbble"></i>
+          <i className="fab fa-dribbble" style={socialIconStyle}></i>
         </a>
       </div>
     </footer>

@@ -17,16 +17,38 @@ function Inbox() {
     }
   }, [user]);
 
+  const styles = {
+    container: {
+      width: "100%",
+      height: "100vh",
+      display: "flex",
+      flexDirection: "column",
+      backgroundColor: "#fafafa",
+    },
+    channelList: {
+      flex: "0 0 30%",
+      borderRight: "1px solid #eaeaea",
+      padding: "10px",
+      boxSizing: "border-box",
+      overflowY: "auto",
+      backgroundColor: "#fff",
+    },
+    chatWindow: {
+      flex: "1",
+      padding: "10px",
+      boxSizing: "border-box",
+      overflowY: "auto",
+      backgroundColor: "#fff",
+    },
+    header: {
+      fontSize: "1.5rem",
+      margin: "0 0 10px",
+      fontWeight: "bold",
+    },
+  };
+
   return (
-    <div
-      style={{
-        width: "100%",
-        height: "100vh",
-        display: "flex",
-        flexDirection: "column",
-        backgroundColor: "#fafafa",
-      }}
-    >
+    <div style={styles.container}>
       <SendBirdProvider
         appId={import.meta.env.VITE_SENDBIRD_APP_ID}
         userId={userId}
@@ -36,25 +58,8 @@ function Inbox() {
       >
         <div style={{ display: "flex", flex: 1, flexDirection: "row" }}>
           {/* Channel List */}
-          <div
-            style={{
-              flex: "0 0 30%",
-              borderRight: "1px solid #eaeaea",
-              padding: "10px",
-              boxSizing: "border-box",
-              overflowY: "auto",
-              backgroundColor: "#fff",
-            }}
-          >
-            <h2
-              style={{
-                fontSize: "1.5rem",
-                margin: "0 0 10px",
-                fontWeight: "bold",
-              }}
-            >
-              Channels
-            </h2>
+          <div style={styles.channelList}>
+            <h2 style={styles.header}>Channels</h2>
             <GroupChannelList
               onChannelSelect={(channel) => {
                 setChannelUrl(channel?.url);
@@ -66,15 +71,7 @@ function Inbox() {
           </div>
 
           {/* Chat Window */}
-          <div
-            style={{
-              flex: "1",
-              padding: "10px",
-              boxSizing: "border-box",
-              overflowY: "auto",
-              backgroundColor: "#fff",
-            }}
-          >
+          <div style={styles.chatWindow}>
             <GroupChannel channelUrl={channelUrl} />
           </div>
         </div>

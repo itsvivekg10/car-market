@@ -6,20 +6,19 @@ import { eq } from "drizzle-orm";
 import FormatResult from "../../../shared/Service";
 import { Link, useParams } from "react-router-dom";
 import Header from "../../component/header/Header";
-import "./categoryyy.css";
 
 function SearchByCategory() {
   const { category } = useParams();
   const [carList, setCarList] = useState([]);
-  const [loading, setLoading] = useState(true); // Loading state
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     getPopularCarList();
   }, [category]);
 
   const getPopularCarList = async () => {
-    setLoading(true); // Start loading when fetching data
-    const startTime = Date.now(); // Capture the start time
+    setLoading(true);
+    const startTime = Date.now();
 
     try {
       const result = await db
@@ -33,91 +32,168 @@ function SearchByCategory() {
     } catch (error) {
       console.error("Error fetching car list:", error);
     } finally {
-      // Ensure loading lasts at least 10 seconds
       const endTime = Date.now();
       const elapsedTime = endTime - startTime;
-      const remainingTime = Math.max(0, 1000 - elapsedTime); // Calculate remaining time if any
+      const remainingTime = Math.max(0, 1000 - elapsedTime);
 
       setTimeout(() => {
-        setLoading(false); // Stop loading after at least 10 seconds
+        setLoading(false);
       }, remainingTime);
     }
   };
 
+  const skeletonCardStyle = {
+    backgroundColor: "#f0f0f0",
+    borderRadius: "4px",
+    padding: "16px",
+    boxSizing: "border-box",
+  };
+
+  const skeletonImageStyle = {
+    width: "100%",
+    height: "150px",
+    backgroundColor: "#e0e0e0",
+    marginBottom: "10px",
+  };
+
+  const skeletonTextStyle = {
+    width: "70%",
+    height: "20px",
+    backgroundColor: "#e0e0e0",
+    marginBottom: "10px",
+  };
+
   return (
-    <>
+    <div style={{ padding: "16px" }}>
       <Header />
       <div
-        className="search_back"
         style={{
+          marginBottom: "20px",
           width: "100%",
-          height: "180px",
+          height: "100px",
           backgroundColor: "black",
           display: "flex",
           alignItems: "center",
+          justifyContent: "center",
+          padding: "10px",
         }}
       >
-        <SearchBar />
+        <div style={{ width: "100%", maxWidth: "600px" }}>
+          <SearchBar />
+        </div>
       </div>
 
-      <div>
-        <h1>{category}</h1>
+      <h1 style={{ fontSize: "24px", marginBottom: "20px" }}>{category}</h1>
 
-        {/* Conditionally render skeleton while loading */}
-        {loading ? (
-          <div className="skeleton-grid">
-            {Array.from({ length: 6 }).map((_, index) => (
-              <div key={index} className="skeleton-card">
-                <div className="skeleton-image"></div>
-                <div className="skeleton-text"></div>
-                <div className="skeleton-details"></div>
+      {loading ? (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+            gap: "16px",
+          }}
+        >
+          {Array.from({ length: 6 }).map((_, index) => (
+            <div key={index} style={skeletonCardStyle}>
+              <div style={skeletonImageStyle}></div>
+              <div>
+                <div style={skeletonTextStyle}></div>
+                <div style={skeletonTextStyle}></div>
               </div>
-            ))}
-          </div>
-        ) : carList.length > 0 ? (
-          <div className="car-grid">
-            {carList.map((item, index) => (
-              <div className="car-card" key={index}>
-                <div className="car-card-header">
-                  {item.images.length > 0 ? (
-                    <img
-                      src={item?.images[0].imageUrl}
-                      alt={item.listingTitle}
-                      className="car-image"
-                    />
-                  ) : (
-                    <div className="car-image-placeholder">No Image</div>
-                  )}
-                  <span className="new-badge">New</span>
-                </div>
-
-                <div className="car-card-body">
-                  <h3>{item.listingTitle}</h3>
-                  <div className="car-details">
-                    <p>{item.mileage} Miles</p>
-                    <p>
-                      {item.fuelType} | {item.transmission}
-                    </p>
-                    <p className="price">${item.sellingPrice}</p>
-                  </div>
-                </div>
-
-                <div className="car-card-footer">
-                  <Link
-                    to={"/listingDetails/" + item?.id}
-                    className="view-details"
+            </div>
+          ))}
+        </div>
+      ) : carList.length > 0 ? (
+        <div
+          style={{
+            display: "grid",
+            gridTemplateColumns: "repeat(auto-fill, minmax(250px, 1fr))",
+            gap: "16px",
+          }}
+        >
+          {carList.map((item, index) => (
+            <div
+              key={index}
+              style={{
+                border: "1px solid #ccc",
+                borderRadius: "4px",
+                overflow: "hidden",
+                display: "flex",
+                flexDirection: "column",
+              }}
+            >
+              <div style={{ position: "relative" }}>
+                {item.images.length > 0 ? (
+                  <img
+                    src={item?.images[0].imageUrl}
+                    alt={item.listingTitle}
+                    style={{
+                      width: "100%",
+                      height: "150px",
+                      objectFit: "cover",
+                    }}
+                  />
+                ) : (
+                  <div
+                    style={{
+                      width: "100%",
+                      height: "150px",
+                      backgroundColor: "#f0f0f0",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "center",
+                    }}
                   >
-                    View Details
-                  </Link>
+                    <p>No Image</p>
+                  </div>
+                )}
+                <span
+                  style={{
+                    position: "absolute",
+                    top: "10px",
+                    left: "10px",
+                    backgroundColor: "#00cc00",
+                    color: "white",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    fontSize: "12px",
+                  }}
+                >
+                  New
+                </span>
+              </div>
+
+              <div style={{ padding: "16px", flexGrow: 1 }}>
+                <h3 style={{ fontSize: "18px", margin: "0 0 10px" }}>
+                  {item.listingTitle}
+                </h3>
+                <div>
+                  <p style={{ margin: "5px 0" }}>{item.mileage} Miles</p>
+                  <p style={{ margin: "5px 0" }}>
+                    {item.fuelType} | {item.transmission}
+                  </p>
+                  <p
+                    style={{
+                      fontSize: "20px",
+                      fontWeight: "bold",
+                      margin: "5px 0",
+                    }}
+                  >
+                    ${item.sellingPrice}
+                  </p>
                 </div>
               </div>
-            ))}
-          </div>
-        ) : (
-          <p>No Cars Found in {category}</p>
-        )}
-      </div>
-    </>
+
+              <div style={{ padding: "16px", borderTop: "1px solid #ccc" }}>
+                <Link to={"/listingDetails/" + item?.id}>View Details</Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      ) : (
+        <p>No Cars Found in {category}</p>
+      )}
+    </div>
   );
 }
 
